@@ -95,7 +95,7 @@ After finish the Semantic Learning state, we can use it to synthesis the instanc
 
 **[Running the Script]**
 
-To make it more intuitive, we have placed the definition of `boxes`  in the function `get_boxes` of the `Semantic_synthesis.py` file. Before making the inference, please select the boxes you wish to use and ensure that it matches the number of assets in the prompt.
+To make it more intuitive, we have placed the definition of `boxes`  in the function `get_boxes` of the `Semantic_synthesis.py` file. Before making the inference, please select the boxes you wish to use and ensure that it matches the number of assets in the prompt.(For visual the boxes before inference, we provide `visual_box_mask.py` which can output an image with the coordinate you provided).
 
 After that, You can execute the synthesis step by running the following command:
 
