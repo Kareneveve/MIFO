@@ -16,7 +16,7 @@ import argparse
 def get_args():
     parser = argparse.ArgumentParser()
 
-    parser.add_argument('--model_id', type=str, default=f"12", help='folder path')
+    parser.add_argument('--model_id', type=str, default="toy_car",help='folder path')
     parser.add_argument('--seed', type=int, default=None)
     parser.add_argument('--prompt', type=str, default="a photo of <asset0>")
     parser.add_argument('--subject_token_indices', type=list, default=[[4]], help='The position of asset in prompt(start from 1), like"[[4],[6],[8]]"')

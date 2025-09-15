@@ -7,8 +7,8 @@ def get_args():
     parser = argparse.ArgumentParser(description="args for Z-sampling")
 
     parser.add_argument('--folder_path', type=str, default=f"examples", help='folder path')
-    parser.add_argument('--instance', type=str, default="12", help='instance path in folder')
-    parser.add_argument('--model_path', type=str, default="/home/skl/hytidel/model/stabilityai/stable-diffusion-2-1-base", help='pretrain model path.')
+    parser.add_argument('--instance', type=str, default='toy_car', help='instance path in folder')
+    parser.add_argument('--model_path', type=str, default="stabilityai/stable-diffusion-2-1-base", help='pretrain model path.')
     parser.add_argument('--seed', type=int, default=None)
 
 
