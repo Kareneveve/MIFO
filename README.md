@@ -9,6 +9,7 @@
 ### Prerequisites 
 - Python 3.8+
 - CUDA 11.7+
+\\
 
 ```bash
 # Clone with submodules
@@ -24,12 +25,11 @@ cd ..
 # Install base dependencies
 pip install -r requirements.txt
 ```
-
+\\
 
 ## Usage 🤩
 
 Make sure you have successfully built python environment and installed pytorch with cuda version. Before running the script, ensure you have all the required packages installed. 
-
 
 ### Semantic Learning 📖
 
@@ -42,7 +42,7 @@ Make sure you have successfully built python environment and installed pytorch w
 * `--model_path`: The path of Pre-trained diffusion model. Default is "./stabilityai/stable-diffusion-2-1-base".
 
 * `--seed`: Random seed to determine the initial token. Default is None.
-
+\\
 
 **[Folder Structure]**
 
@@ -57,7 +57,7 @@ Before start to Semantic Learning, please make sure the instance folder have the
     └── ...           # Additional masks
 
 ```
-
+\\
 
 **[Running the Script]**
 
@@ -70,9 +70,9 @@ python semantic_learning.py
 The predefined seed are random seed.
 
 The training result will be output on the folder names "Model_ours/{instance name}".
+\\
 
-
-### Semantic Synthesis 🪄
+### Semantic Synthes`is 🪄
 
 After finish the Semantic Learning state, we can use it to synthesis the instance with a new prompt.
 
@@ -89,7 +89,7 @@ After finish the Semantic Learning state, we can use it to synthesis the instanc
 * `--seed`: Random seed to determine the initial latent. Default is None.
 
 * `--subject_token_indices`: The sequence numbers of the asset in the prompt(start from 1). Default is [[4]].
-
+\\
 
 **[Running the Script]**
 
@@ -104,6 +104,15 @@ python semantic_synthesis.py
 The predefined seed are random seed.
 
 The script will save the result in the folder which create under the `output_path` and named as `model_id`.
-
+\\
 
 ## Citation
+```
+@inproceedings{,
+title={},
+author={},
+booktitle={},
+year={},
+url={}
+}
+```
