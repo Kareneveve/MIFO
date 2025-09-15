@@ -86,7 +86,7 @@ After finish the Semantic Learning state, we can use it to synthesis the instanc
 
 * `--output_path`: Path to save the generated images. Default is "output".
 
-* `--prompt`: The prompt to inference the image. Default is "a photo of <\asset0>".
+* `--prompt`: The prompt to inference the image. Default is "a photo of &lt;asset0&gt;".
 
 * `--seed`: Random seed to determine the initial latent. Default is None.
 
