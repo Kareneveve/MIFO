@@ -2,6 +2,10 @@
 
 ## Abstract 🧐
 
+This paper propose a method for precise learning and synthesizing multi-instance semantics from a single image. Specifically, during the semantic learning stage, we propose a penalty-based attention optimization to disentangle similar semantics. 
+During the semantic synthesis stage, we introduce box control in attention layers to mitigate semantic leakage. Experimental results show that, our method achieves disentangled and high-quality semantic learning and synthesis, excellently balancing editability and instance-consistency. 
+Our method remains robust when dealing with semantically or visually similar instances or rare-seen objects. 
+
 
 
 ## Installation 🤗
@@ -25,29 +29,30 @@ cd ..
 # Install base dependencies
 pip install -r requirements.txt
 ```
-  
+
 
 ## Usage 🤩
 
-Make sure you have successfully built python environment and installed pytorch with cuda version. Before running the script, ensure you have all the required packages installed. 
+Make sure you have successfully set up the Python environment and installed PyTorch with CUDA support.
+
+Before running the scripts, ensure that all required packages are installed.
 
 ### **Semantic Learning** 📖
 ---
 
 **[Command-Line Arguments]**
 
-* `--folder_path`: The path of image folder. Default is "example".
+* `--folder_path`: Path to the image folder. Default is `"example"`.
 
-* `--instance`: The instance folder name waiting to be learn(please make sure the instance folder have correct structure). Default is "toy_car".
+* `--instance`: The instance folder name to be learned (please ensure the folder has the correct structure). Default is `"toy_car"`.
 
-* `--model_path`: The path of Pre-trained diffusion model. Default is "./stabilityai/stable-diffusion-2-1-base".
+* `--model_path`: Path to the pre-trained diffusion model. Default is `"./stabilityai/stable-diffusion-2-1-base"`.
 
-* `--seed`: Random seed to determine the initial token. Default is None.
-  
+* `--seed`: Random seed to determine the initial token. Default is `None`.
 
 **[Folder Structure]**
 
-Before start to Semantic Learning, please make sure the instance folder have the structure as follow:
+Before starting semantic learning, please ensure the instance folder has the following structure:
 
 ```
 {folder_path}/
@@ -58,55 +63,57 @@ Before start to Semantic Learning, please make sure the instance folder have the
     └── ...           # Additional masks
 
 ```
-  
+
 
 **[Running the Script]**
 
-You can execute the learning step by running the following command:
+You can execute the learning step with:
 
 ```bash
 python semantic_learning.py
 ```
 
-The predefined seed are random seed.
+The predefined seed is randomly generated.
 
-The training result will be output on the folder names "Model_ours/{instance name}".
-  
+Training results will be saved in the folder `Model_ours/{instance name}`.
+
+
+
 
 ### **Semantic Synthesis** 🪄
 ---
 
-After finish the Semantic Learning state, we can use it to synthesis the instance with a new prompt.
+After completing the semantic learning stage, you can use the trained model to synthesize instances with a new prompt.
 
 **[Command-Line Arguments]**
 
-* `--batch_size`: The batch size of inference. Default is 1.
+* `--batch_size`: Batch size for inference. Default is `1`.
 
-* `--model_id`: The name of Semantic learning model in the "Model_ours". Default is "toy_car".
+* `--model_id`: The name of the semantic learning model in `"Model_ours"`. Default is `"toy_car"`.
 
-* `--output_path`: Path to save the generated images. Default is "output".
+* `--output_path`: Path to save the generated images. Default is `"output"`.
 
-* `--prompt`: The prompt to inference the image. Default is "a photo of &lt;asset0&gt;".
+* `--prompt`: The prompt for image synthesis. Default is `"a photo of <asset0>"`.
 
-* `--seed`: Random seed to determine the initial latent. Default is None.
+* `--seed`: Random seed to determine the initial latent. Default is `None`.
 
-* `--subject_token_indices`: The sequence numbers of the asset in the prompt(start from 1). Default is [[4]].
-  
+* `--subject_token_indices`: The index/indices of assets in the prompt (starting from 1). Default is `[[4]]`.
+
 
 **[Running the Script]**
 
-To make it more intuitive, we have placed the definition of `boxes`  in the function `get_boxes` of the `Semantic_synthesis.py` file. Before making the inference, please select the boxes you wish to use and ensure that it matches the number of assets in the prompt.(For visual the boxes before inference, we provide `visual_box_mask.py` which can output an image with the coordinate you provided).
+To simplify usage, the definition of `boxes` is provided in the function `get_boxes` within the `semantic_synthesis.py` file. Before inference, please select the boxes you wish to use and ensure that the number matches the number of assets in the prompt. (For visualizing boxes before inference, we provide `visual_box_mask.py`, which outputs an image with the coordinates you specify.)
 
-After that, You can execute the synthesis step by running the following command:
+After that, you can execute the synthesis step with:
 
 ```bash
 python semantic_synthesis.py
 ```
 
-The predefined seed are random seed.
+The predefined seed is randomly generated.
 
-The script will save the result in the folder which create under the `output_path` and named as `model_id`.
-  
+Results will be saved in a folder created under `output_path`, named after the `model_id`.
+
 
 ## Citation
 ```
