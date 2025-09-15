@@ -10,7 +10,7 @@
 - Python 3.8+
 - CUDA 11.7+
   
-
+### Dependencies
 ```bash
 # Clone with submodules
 git clone --recurse-submodules https://github.com/Kareneveve/All_instance_in_image.git
