@@ -31,7 +31,8 @@ pip install -r requirements.txt
 
 Make sure you have successfully built python environment and installed pytorch with cuda version. Before running the script, ensure you have all the required packages installed. 
 
-### Semantic Learning 📖
+### **Semantic Learning** 📖
+---
 
 **[Command-Line Arguments]**
 
@@ -72,7 +73,8 @@ The predefined seed are random seed.
 The training result will be output on the folder names "Model_ours/{instance name}".
   
 
-### Semantic Synthes`is 🪄
+### **Semantic Synthesis** 🪄
+---
 
 After finish the Semantic Learning state, we can use it to synthesis the instance with a new prompt.
 
