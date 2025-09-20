@@ -1,4 +1,4 @@
-# All instance in image
+# MIFO:Learning and Synthesizing Multiple Instance Semantics from One Image
 
 ## Abstract 🧐
 
