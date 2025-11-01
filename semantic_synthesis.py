@@ -16,7 +16,7 @@ import argparse
 def get_args():
     parser = argparse.ArgumentParser()
 
-    parser.add_argument('--model_id', type=str, default="toy_car",help='folder path')
+    parser.add_argument('--model_id', type=str, default=f"12", help='folder path')
     parser.add_argument('--seed', type=int, default=None)
     parser.add_argument('--prompt', type=str, default="a photo of <asset0>")
     parser.add_argument('--subject_token_indices', type=list, default=[[4]], help='The position of asset in prompt(start from 1), like"[[4],[6],[8]]"')
@@ -61,7 +61,9 @@ def run(
     cross_loss_scale= 1.5, # 1.5,
     self_loss_scale= 0.5, # 0.5,
     alpha_max = 0.4,
-    alpha_min = 0.1,
+    alpha_stage1_end = 0.1,
+    alpha_final = 0.01,
+    stage1_steps = 3,
     alpha_desc = True,
     classifier_free_guidance_scale=7.5,
     num_gd_iterations=5,
@@ -86,7 +88,9 @@ def run(
         eos_token_index=eos_token_index,
 
         alpha_max=alpha_max,
-        alpha_min=alpha_min,
+        alpha_stage1_end = alpha_stage1_end,
+        alpha_final = alpha_final,
+        stage1_steps = stage1_steps,
         alpha_desc = alpha_desc,
 
         cross_loss_coef=cross_loss_scale,

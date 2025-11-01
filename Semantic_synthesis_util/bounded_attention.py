@@ -35,7 +35,9 @@ class BoundedAttention(injection_utils.AttentionBase):
         self_loss_coef=0.5,
 
         alpha_max = 0.5,
-        alpha_min = 0.1,
+        alpha_stage1_end = 0.1,
+        alpha_final = 0.01,
+        stage1_steps = 3,
         alpha_desc = True,
 
         max_guidance_iter=15,
@@ -117,8 +119,10 @@ class BoundedAttention(injection_utils.AttentionBase):
 
         self.time_step_cnt = 0
         self.alpha_max = alpha_max
-        self.alpha_min = alpha_min
         self.alpha_desc = alpha_desc
+        self.alpha_stage1_end = alpha_stage1_end
+        self.alpha_final = alpha_final
+        self.stage1_steps = stage1_steps
 
 
     def clear_values(self, include_maps=False):
@@ -386,27 +390,25 @@ class BoundedAttention(injection_utils.AttentionBase):
         normalized_loss = loss / b / s
         return loss, normalized_loss
 
-    def _get_alpha_cosine(self, N=150):
+    def _get_alpha_cosine(self):
         t = self.time_step_cnt // 10
-        alpha_start = self.alpha_max     # 初始 0.5
-        alpha_stage1_end = self.alpha_min  # 第一阶段结束 0.2
-        alpha_final = 0.01               # 最终值
-        stage1_steps = 3                 # 第一阶段步数
+        alpha_start = self.alpha_max     
+        alpha_stage1_end = self.alpha_stage1_end 
+        alpha_final = self.alpha_final                
+        stage1_steps = self.stage1_steps
+        N = self.min_clustering_step
 
-        # 边界情况
-        if t < 1:
-            return alpha_start
+
         if t <= stage1_steps:
-            # 线性衰减：t=1→alpha_start, t=5→alpha_stage1_end
             return alpha_start + (alpha_stage1_end - alpha_start) * (t - 1) / (stage1_steps - 1)
         if t >= N:
             return alpha_final
 
-        # 第二阶段余弦退火：t2=1…(N-stage1_steps)
+
         t2 = t - stage1_steps
         T2 = N - stage1_steps
         cos_coeff = (1 + math.cos(math.pi * t2 / T2)) / 2
-        # 从 alpha_stage1_end → alpha_final
+
         return alpha_final + (alpha_stage1_end - alpha_final) * cos_coeff
 
     def _compute_loss_term(self, foreground_values, background_values):

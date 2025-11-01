@@ -1,12 +1,8 @@
-# MIFO:Learning and Synthesizing Multiple Instance Semantics from One Image
+# MIFO: Learning and Synthesizing Multi-Instance from One Image
 
 ## Abstract 🧐
 
-This paper propose a method for precise learning and synthesizing multi-instance semantics from a single image. Specifically, during the semantic learning stage, we propose a penalty-based attention optimization to disentangle similar semantics. 
-During the semantic synthesis stage, we introduce box control in attention layers to mitigate semantic leakage. Experimental results show that, our method achieves disentangled and high-quality semantic learning and synthesis, excellently balancing editability and instance-consistency. 
-Our method remains robust when dealing with semantically or visually similar instances or rare-seen objects. 
-
-
+This paper proposes a method for precise learning and synthesizing multi-instance semantics from a single image. The difficulty of this problem lies in the limited training data, and it becomes even more challenging when the instances to be learned have similar semantics or appearance. To address this, we propose a penalty-based attention optimization to disentangle similar semantics during the learning stage. Then, in the synthesis, we introduce and optimize box control in attention layers to further mitigate semantic leakage while precisely controlling the output layout. Experimental results demonstrate that our method achieves disentangled and high-quality semantic learning and synthesis, strikingly balancing editability and instance consistency. Our method remains robust when dealing with semantically or visually similar instances or rare-seen objects.
 
 ## Installation 🤗
 
@@ -17,8 +13,8 @@ Our method remains robust when dealing with semantically or visually similar ins
 ### Dependencies
 ```bash
 # Clone with submodules
-git clone --recurse-submodules https://github.com/Kareneveve/All_instance_in_image.git
-cd All_instance_in_image
+git clone --recurse-submodules https://github.com/Kareneveve/MIFO.git
+cd MIFO
 
 # Install LoRA
 cd lora-master
