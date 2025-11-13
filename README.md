@@ -113,11 +113,10 @@ Results will be saved in a folder created under `output_path`, named after the `
 
 ## Citation
 ```
-@inproceedings{,
-title={},
-author={},
-booktitle={},
-year={},
-url={}
+@article{su2025mifo,
+  title={MIFO: Learning and Synthesizing Multi-Instance from One Image},
+  author={Su, Kailun and He, Ziqi and Wang, Xi and Zhou, Yang},
+  journal={arXiv preprint arXiv:2511.00542},
+  year={2025}
 }
 ```
